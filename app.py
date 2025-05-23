@@ -5,6 +5,10 @@ import plotly.graph_objects as go
 from streamlit_folium import st_folium
 import folium
 
+st.set_page_config(
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 st.markdown("""
     <style>
     /* Entfernt oberen Abstand in der Sidebar */
@@ -14,10 +18,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.set_page_config(
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
 
 st.markdown("""
     <style>
