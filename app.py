@@ -94,14 +94,29 @@ with st.sidebar:
         kenntnisse_filtered = kenntnisse_df.dropna(subset=["quantitative Beurteilung"])
 
         fig = go.Figure()
+        werte = kenntnisse_filtered["quantitative Beurteilung"].tolist()
+        labels = kenntnisse_filtered["Kenntnis"].tolist()
+
+        # Hauptfläche mit Füllung
         fig.add_trace(go.Scatterpolar(
-            r=kenntnisse_filtered["quantitative Beurteilung"].tolist(),
-            theta=kenntnisse_filtered["Kenntnis"].tolist(),
+            r=werte,
+            theta=labels,
             fill='toself',
             name='Skill-Level',
             line=dict(color="#708238", width=3),  # Olivgrün
             marker=dict(size=6)
         ))
+
+        # Zusatzlinie zum Rand schließen (explizit)
+        fig.add_trace(go.Scatterpolar(
+            r=werte + [werte[0]],
+            theta=labels + [labels[0]],
+            fill=None,
+            line=dict(color="#708238", width=3),
+            mode="lines",
+            showlegend=False
+        ))
+
         fig.update_layout(
             polar=dict(
                 radialaxis=dict(visible=True, range=[0, 5], showgrid=True, gridcolor="lightgrey",
