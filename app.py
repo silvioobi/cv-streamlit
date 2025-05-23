@@ -194,8 +194,8 @@ fig.update_layout(
 for y_pos in group_lines[:-1]:  # letzte Linie nicht nötig
     fig.add_shape(
         type="line",
-        x0=cv_data["Start"].min(),
-        x1=cv_data["Finish"].max(),
+        x0=0,
+        x1=1,
         y0=y_pos,
         y1=y_pos,
         xref='paper',
