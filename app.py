@@ -109,30 +109,6 @@ with st.sidebar:
     except FileNotFoundError:
         st.error("Datei 'Kenntnisse.xlsx' nicht gefunden.")
 
-        # fig.update_layout(
-        #     paper_bgcolor="rgba(0,0,0,0)",  # transparenter Hintergrund
-        #     plot_bgcolor="rgba(0,0,0,0)",
-        #     polar=dict(
-        #         bgcolor="rgba(0,0,0,0)",
-        #         radialaxis=dict(
-        #             visible=True,
-        #             range=[0, 5],
-        #             showline=True,
-        #             linewidth=1,
-        #             gridcolor="lightgray",
-        #             linecolor="lightgray",
-        #             tickfont=dict(color="white", size=12)
-        #         ),
-        #         angularaxis=dict(
-        #             tickfont=dict(size=13, color="white"),
-        #             rotation=90,
-        #             direction="clockwise"
-        #         )
-        #     ),
-        #     font=dict(color="white"),
-        #     showlegend=False,
-        #     height=450
-        # )
         st.plotly_chart(fig, use_container_width=True)
     except FileNotFoundError:
         st.error(f"Datei 'Kenntnisse.xlsx' nicht gefunden.")
@@ -141,10 +117,6 @@ with st.sidebar:
 
     for titel, link in analysen_links.items():
         st.markdown(f"- [{titel}]({link})")
-
-    #st.subheader("Zertifikate")
-    #for cert in certificates:
-    #    st.markdown(f"- {cert}")
 
 
 st.subheader("Beruflicher Werdegang und Aus-/Weiterbildungen")
@@ -158,7 +130,6 @@ for cat in category_order:
     current_y += count
     group_lines.append(current_y - 0.5)  # Y-Position für horizontale Linie
 
-# Gantt-Diagramm mit angepasster Legende
 fig = px.timeline(
     cv_data,
     x_start="Start",
@@ -180,9 +151,17 @@ fig = px.timeline(
 fig.update_yaxes(autorange="reversed", title=None)
 fig.update_layout(
     autosize=True,
-    font=dict(size=14),
+    font=dict(color="black", size=14),
     margin=dict(t=30, b=30, l=20, r=150),
     legend_title_text="",
+    xaxis=dict(
+        tickfont=dict(color="black"),
+        titlefont=dict(color="black")
+    ),
+    yaxis=dict(
+        tickfont=dict(color="black"),
+        titlefont=dict(color="black")
+    ),
     legend=dict(
         orientation="h",  # horizontal
         yanchor="bottom",
@@ -190,6 +169,7 @@ fig.update_layout(
         xanchor="center",
         x=0.5
     ))
+
 
 for y_pos in group_lines[:-1]:  # letzte Linie nicht nötig
     fig.add_shape(
