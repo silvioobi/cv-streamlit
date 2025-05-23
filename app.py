@@ -109,8 +109,8 @@ with st.sidebar:
                 angularaxis=dict(tickfont=dict(size=12))
             ),
             showlegend=False,
-            paper_bgcolor='#f5f7fa',
-            plot_bgcolor='#f5f7fa',  
+            paper_bgcolor='#ffffff',
+            plot_bgcolor='#ffffff',
             font=dict(color='black'),
             height=450
         )
