@@ -199,7 +199,7 @@ for y_pos in group_lines[:-1]:  # letzte Linie nicht nötig
         y0=y_pos,
         y1=y_pos,
         line=dict(color="lightgrey", width=1, dash="dot"),
-        xref='x',
+        xref='paper',
         yref='y'
     )
 
