@@ -194,7 +194,7 @@ fig.update_layout(
 for y_pos in group_lines[:-1]:  # letzte Linie nicht nötig
     fig.add_shape(
         type="line",
-        x0=0,
+        x0=-1,
         x1=1,
         y0=y_pos,
         y1=y_pos,
