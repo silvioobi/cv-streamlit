@@ -5,6 +5,14 @@ import plotly.graph_objects as go
 from streamlit_folium import st_folium
 import folium
 
+st.markdown("""
+    <style>
+    /* Entfernt oberen Abstand in der Sidebar */
+    section[data-testid="stSidebar"] .block-container {
+        padding-top: 1rem;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 st.set_page_config(
     layout="wide",
@@ -128,7 +136,7 @@ with st.sidebar:
 
     except FileNotFoundError:
         st.error("Datei 'Kenntnisse.xlsx' nicht gefunden.")
-        
+
         # fig.update_layout(
         #     paper_bgcolor="rgba(0,0,0,0)",  # transparenter Hintergrund
         #     plot_bgcolor="rgba(0,0,0,0)",
