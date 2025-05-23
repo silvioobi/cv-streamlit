@@ -198,9 +198,9 @@ for y_pos in group_lines[:-1]:  # letzte Linie nicht nötig
         x1=cv_data["Finish"].max(),
         y0=y_pos,
         y1=y_pos,
-        line=dict(color="lightgrey", width=1, dash="dot"),
         xref='paper',
-        yref='y'
+        yref='y',
+        line=dict(color="lightgrey", width=1, dash="dot")
     )
 
 st.plotly_chart(fig, use_container_width=True)
