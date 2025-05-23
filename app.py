@@ -33,7 +33,6 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
->>>>>>> 5c55cedb84e031822153fc18bc0db8208a72a274
 # Load CV data
 cv_file = "CV.xlsx"
 cv_data = pd.read_excel(cv_file)
