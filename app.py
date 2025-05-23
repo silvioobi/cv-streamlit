@@ -13,7 +13,7 @@ st.markdown("""
     <style>
     /* Entfernt oberen Abstand in der Sidebar */
     section[data-testid="stSidebar"] .block-container {
-        padding-top: 100px;
+        padding-top: 1000px;
     }
     </style>
 """, unsafe_allow_html=True)
