@@ -98,32 +98,46 @@ with st.sidebar:
             r=kenntnisse_filtered["quantitative Beurteilung"].tolist(),
             theta=kenntnisse_filtered["Kenntnis"].tolist(),
             fill='toself',
-            name='Skill-Level'
+            name='Skill-Level',
+            line=dict(color="#708238", width=3),  # Olivgrün
+            marker=dict(size=6)
         ))
         fig.update_layout(
-            paper_bgcolor="rgba(0,0,0,0)",  # transparenter Hintergrund
-            plot_bgcolor="rgba(0,0,0,0)",
             polar=dict(
-                bgcolor="rgba(0,0,0,0)",
-                radialaxis=dict(
-                    visible=True,
-                    range=[0, 5],
-                    showline=True,
-                    linewidth=1,
-                    gridcolor="lightgray",
-                    linecolor="lightgray",
-                    tickfont=dict(color="white", size=12)
-                ),
-                angularaxis=dict(
-                    tickfont=dict(size=13, color="white"),
-                    rotation=90,
-                    direction="clockwise"
-                )
+                radialaxis=dict(visible=True, range=[0, 5], showgrid=True, gridcolor="lightgrey",
+                                tickfont=dict(size=12)),
+                angularaxis=dict(tickfont=dict(size=12))
             ),
-            font=dict(color="white"),
             showlegend=False,
+            paper_bgcolor='white',
+            plot_bgcolor='white',
+            font=dict(color='black'),
             height=450
         )
+        # fig.update_layout(
+        #     paper_bgcolor="rgba(0,0,0,0)",  # transparenter Hintergrund
+        #     plot_bgcolor="rgba(0,0,0,0)",
+        #     polar=dict(
+        #         bgcolor="rgba(0,0,0,0)",
+        #         radialaxis=dict(
+        #             visible=True,
+        #             range=[0, 5],
+        #             showline=True,
+        #             linewidth=1,
+        #             gridcolor="lightgray",
+        #             linecolor="lightgray",
+        #             tickfont=dict(color="white", size=12)
+        #         ),
+        #         angularaxis=dict(
+        #             tickfont=dict(size=13, color="white"),
+        #             rotation=90,
+        #             direction="clockwise"
+        #         )
+        #     ),
+        #     font=dict(color="white"),
+        #     showlegend=False,
+        #     height=450
+        # )
         st.plotly_chart(fig, use_container_width=True)
     except FileNotFoundError:
         st.error(f"Datei 'Kenntnisse.xlsx' nicht gefunden.")
@@ -147,7 +161,15 @@ fig = px.timeline(
     x_end="Finish",
     y="Bezeichnung",
     color="Kategorie",
-    color_discrete_sequence=px.colors.qualitative.Set2,
+    #color_discrete_sequence=px.colors.qualitative.Set2,
+    color_discrete_sequence=[
+            "#708238",  # Olive
+            "#8A9A5B",  # Graugrün
+            "#A3C1AD",  # Helloliv
+            "#B6C96D",  # Soft Green
+            "#CDE5A7",  # Pastellgrün
+            "#556B2F"   # Dunkeloliv
+        ],
     hover_data=["Institution"]
 )
 
