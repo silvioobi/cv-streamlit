@@ -11,13 +11,17 @@ st.set_page_config(
 )
 st.markdown("""
     <style>
-    /* Entfernt oberen Abstand in der Sidebar */
-    section[data-testid="stSidebar"] .block-container {
-        padding-top: 1000px;
+    /* Reduziert oberes Padding der Sidebar */
+    [data-testid="stSidebar"] > div:first-child {
+        padding-top: 1rem;
+    }
+
+    /* Optional: Reduziert Padding im Mainbereich */
+    .main .block-container {
+        padding-top: 1rem;
     }
     </style>
 """, unsafe_allow_html=True)
-
 
 st.markdown("""
     <style>
