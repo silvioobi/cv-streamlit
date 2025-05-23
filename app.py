@@ -93,15 +93,24 @@ with st.sidebar:
         kenntnisse_df = pd.read_excel("Kenntnisse.xlsx")
         kenntnisse_filtered = kenntnisse_df.dropna(subset=["quantitative Beurteilung"])
 
+        # Werte extrahieren
+        werte = kenntnisse_filtered["quantitative Beurteilung"].tolist()
+        labels = kenntnisse_filtered["Kenntnis"].tolist()
+
+        # Ersten Punkt am Ende duplizieren
+        werte.append(werte[0])
+        labels.append(labels[0])
+
         fig = go.Figure()
         fig.add_trace(go.Scatterpolar(
-            r=kenntnisse_filtered["quantitative Beurteilung"].tolist(),
-            theta=kenntnisse_filtered["Kenntnis"].tolist(),
+            r=werte,
+            theta=labels,
             fill='toself',
             name='Skill-Level',
             line=dict(color="#708238", width=3),  # Olivgrün
             marker=dict(size=6)
         ))
+
         fig.update_layout(
             polar=dict(
                 radialaxis=dict(visible=True, range=[0, 5], showgrid=True, gridcolor="lightgrey",
@@ -109,11 +118,17 @@ with st.sidebar:
                 angularaxis=dict(tickfont=dict(size=12))
             ),
             showlegend=False,
-            paper_bgcolor='#f0f2f6',
+            paper_bgcolor='#f0f2f6',  # match sidebar
             plot_bgcolor='#f0f2f6',
             font=dict(color='black'),
             height=450
         )
+
+        st.plotly_chart(fig, use_container_width=True)
+
+    except FileNotFoundError:
+        st.error("Datei 'Kenntnisse.xlsx' nicht gefunden.")
+        
         # fig.update_layout(
         #     paper_bgcolor="rgba(0,0,0,0)",  # transparenter Hintergrund
         #     plot_bgcolor="rgba(0,0,0,0)",
