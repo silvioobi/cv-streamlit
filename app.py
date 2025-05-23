@@ -109,8 +109,8 @@ with st.sidebar:
                 angularaxis=dict(tickfont=dict(size=12))
             ),
             showlegend=False,
-            paper_bgcolor='white',
-            plot_bgcolor='white',
+            paper_bgcolor='#f5f7fa',
+            plot_bgcolor='#f5f7fa',  
             font=dict(color='black'),
             height=450
         )
@@ -147,9 +147,9 @@ with st.sidebar:
     for titel, link in analysen_links.items():
         st.markdown(f"- [{titel}]({link})")
 
-    st.subheader("Zertifikate")
-    for cert in certificates:
-        st.markdown(f"- {cert}")
+    #st.subheader("Zertifikate")
+    #for cert in certificates:
+    #    st.markdown(f"- {cert}")
 
 
 st.subheader("Beruflicher Werdegang und Aus-/Weiterbildungen")
