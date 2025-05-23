@@ -154,14 +154,6 @@ fig.update_layout(
     font=dict(color="black", size=14),
     margin=dict(t=30, b=30, l=20, r=150),
     legend_title_text="",
-    xaxis=dict(
-        tickfont=dict(color="black"),
-        titlefont=dict(color="black")
-    ),
-    yaxis=dict(
-        tickfont=dict(color="black"),
-        titlefont=dict(color="black")
-    ),
     legend=dict(
         orientation="h",  # horizontal
         yanchor="bottom",
@@ -169,6 +161,15 @@ fig.update_layout(
         xanchor="center",
         x=0.5
     ))
+
+fig.update_xaxes(
+    tickfont=dict(color="black"),
+    title_font=dict(color="black")
+)
+fig.update_yaxes(
+    tickfont=dict(color="black"),
+    title_font=dict(color="black")
+)
 
 
 for y_pos in group_lines[:-1]:  # letzte Linie nicht nötig
