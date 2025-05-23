@@ -149,6 +149,15 @@ with st.sidebar:
 
 st.subheader("Beruflicher Werdegang und Aus-/Weiterbildungen")
 
+category_order = cv_data["Kategorie"].dropna().unique().tolist()
+
+group_lines = []
+current_y = 0
+for cat in category_order:
+    count = cv_data[cv_data["Kategorie"] == cat].shape[0]
+    current_y += count
+    group_lines.append(current_y - 0.5)  # Y-Position für horizontale Linie
+
 # Gantt-Diagramm mit angepasster Legende
 fig = px.timeline(
     cv_data,
@@ -181,6 +190,18 @@ fig.update_layout(
         xanchor="center",
         x=0.5
     ))
+
+for y_pos in group_lines[:-1]:  # letzte Linie nicht nötig
+    fig.add_shape(
+        type="line",
+        x0=cv_data["Start"].min(),
+        x1=cv_data["Finish"].max(),
+        y0=y_pos,
+        y1=y_pos,
+        line=dict(color="lightgrey", width=1, dash="dot"),
+        xref='x',
+        yref='y'
+    )
 
 st.plotly_chart(fig, use_container_width=True)
 
