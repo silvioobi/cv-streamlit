@@ -9,39 +9,7 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-st.markdown("""
-    <style>
-    /* Reduziert oberes Padding der Sidebar */
-    [data-testid="stSidebar"] > div:first-child {
-        padding-top: 1rem;
-    }
 
-    /* Optional: Reduziert Padding im Mainbereich */
-    .main .block-container {
-        padding-top: 1rem;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-    <style>
-    html, body, [class*="css"] {
-        background-color: white;
-        color: black;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-    <style>
-    html, body, [class*="css"]  {
-        font-size: 16px;
-    }
-    h1, h2, h3, h4 {
-        font-weight: 700;
-    }
-    </style>
-    """, unsafe_allow_html=True)
 
 # Load CV data
 cv_file = "CV.xlsx"
